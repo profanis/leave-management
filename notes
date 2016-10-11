@@ -1,0 +1,13 @@
+http://stackoverflow.com/questions/18273166/scaffolding-with-node-js-express-and-mongoose-like-grails
+
+There is the formage project which attempts to build forms from models for admin GUIs. You might want to check on that. There possibly are other similar projects too.
+
+Now I realize that that was of course not what the question was aiming for, but I will record a possible way to do it here:
+
+If you wish to implement these things, you might go the following route:
+
+Use sessions.
+Implement your models using sequelize or mongoose.
+Implement authentication using lockit or passport (or any other authn framework).
+Implement authorization using node-acl (or any other authz framework of your choosing)
+Implement the desired CRUD functionality using e. g. formage project.

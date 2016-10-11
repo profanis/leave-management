@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='icon', href='../../favicon.ico')
+    title JADE-Bootstrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='stylesheets/style.css')
+    // link(rel="stylesheet",href="css/bootstrap.min.css")
+    // Custom styles for this template
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body(data-spy='scroll', data-target='.scrollspy')
+    h1=title
+      block content
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    // script(src="js/jquery.min.js")
+    // script(src="js/bootstrap.min.js")
+
