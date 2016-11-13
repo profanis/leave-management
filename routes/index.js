@@ -10,12 +10,13 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res) {
   
-  if (req.body.username == 'user1' && req.body.password == 'p1') {
+  if (req.body.login == 'user1' && req.body.password == 'p1') {
     req.session.user = {
-      username: req.body.username,
+      login: req.body.login,
       password: req.body.password
     };
     res.redirect('dashboard');
+    return;
   }
 
   res.render('index',{

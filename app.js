@@ -4,10 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var expressSession = require('express-session');
+var cookieSession = require('cookie-session');
+var Lockit = require('lockit');
+var lockit = new Lockit();
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
 
 var app = express();
@@ -24,15 +25,19 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-app.use(expressSession({
-  key: 'app.sess',
+app.use(cookieSession({
   secret: 'SECRET_CODE__CHANGE_ME'
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/dashboard', dashboard);
+
+app.use(lockit.router);
+lockit.on('signup', function(user, res) {
+  console.log('a new user signed up');
+  res.send('Welcome!');   // set signup.handleResponse to 'false' for this to work 
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
