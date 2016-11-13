@@ -9,11 +9,19 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res) {
+  
   if (req.body.username == 'user1' && req.body.password == 'p1') {
-    res.render('user', {
-      title: 'test'
-    });
+    req.session.user = {
+      username: req.body.username,
+      password: req.body.password
+    };
+    res.redirect('dashboard');
   }
+
+  res.render('index',{
+    status:false,
+    message:"wrong credentials"
+  })
 });
 
 module.exports = router;
